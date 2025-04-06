@@ -1,16 +1,24 @@
 {
   "expo": {
-    "name": "wallpics",
+    "name": "WallPics",
     "slug": "wallpics",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#111432"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#0F0F0F",
+      "barStyle": "light-content"
+    },
+    "iosStatusBar": {
+      "backgroundColor": "#0F0F0F",
+      "barStyle": "light-content"
     },
     "ios": {
       "supportsTablet": true
@@ -18,8 +26,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#0F0F0F"
+      },
+      "package": "com.vaishnavmandlik.wallpics"
     },
     "web": {
       "favicon": "./assets/favicon.png"
