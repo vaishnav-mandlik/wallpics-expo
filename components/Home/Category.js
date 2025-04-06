@@ -15,6 +15,7 @@ const Category = () => {
     CategoryList[0]?.name || "Nature"
   );
   const [data, setData] = useState(null);
+
   const getData = async () => {
     try {
       const data = await fetchCategories();
@@ -41,6 +42,7 @@ const Category = () => {
       );
     }
   };
+
   useLayoutEffect(() => {
     getData();
     fetchWallpaper();
@@ -67,6 +69,7 @@ const Category = () => {
           )}
         />
       </View>
+
       {!data && (
         <View>
           <FlatList
@@ -76,7 +79,8 @@ const Category = () => {
           />
         </View>
       )}
-      <View style={{ flex: 1 }}>
+
+      <View style={styles.wallpaperWrapper}>
         {data && data.length > 0 && (
           <FlatList
             data={data}
@@ -84,9 +88,10 @@ const Category = () => {
             renderItem={({ item }) => <Wallpaper item={item} />}
           />
         )}
+
         {data && data.length === 0 && (
-          <View className="flex-1 justify-center items-center">
-            <Text className="text-white text-center">Wallpaper not found</Text>
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>Wallpaper not found</Text>
           </View>
         )}
       </View>
@@ -103,6 +108,18 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1,
+  },
+  wallpaperWrapper: {
+    flex: 1,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyText: {
+    color: "#FFFFFF",
+    textAlign: "center",
   },
 });
 

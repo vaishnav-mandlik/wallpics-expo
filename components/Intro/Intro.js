@@ -14,7 +14,7 @@ const Intro = () => {
   const navigation = useNavigation();
 
   return (
-    <View className="flex-1">
+    <View style={styles.container}>
       <ImageBackground
         source={require("../../assets/BgImage.jpg")}
         style={styles.backgroundImage}
@@ -32,24 +32,18 @@ const Intro = () => {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
         >
-          <View className="mb-[-40%]">
-            <Text className="text-center text-white text-4xl font-normal">
-              WallPics
-            </Text>
-            <Text className="text-center text-gray-300 text-xl font-light mt-2">
-              Set Wallpaper or Download it.
-            </Text>
-            <View className="flex flex-row justify-center items-center mx-10 ">
+          <View style={styles.innerContent}>
+            <Text style={styles.title}>WallPics</Text>
+            <Text style={styles.subtitle}>Set Wallpaper or Download it.</Text>
+            <View style={styles.buttonWrapper}>
               <TouchableOpacity
-                className="px-4 py-3 rounded-3xl mt-8 bg-blue-900 w-full"
+                style={styles.button}
                 onPress={async () => {
                   await AsyncStorage.setItem("isOnboarded", "true");
                   navigation.navigate("Home");
                 }}
               >
-                <Text className="text-center text-lg text-white font-normal">
-                  Get Started
-                </Text>
+                <Text style={styles.buttonText}>Get Started</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -60,6 +54,9 @@ const Intro = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   backgroundImage: {
     flex: 1,
     resizeMode: "cover",
@@ -73,6 +70,44 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: "center",
     alignItems: "center",
+  },
+  innerContent: {
+    marginBottom: "-40%",
+    width: "100%",
+    paddingHorizontal: 20,
+  },
+  title: {
+    textAlign: "center",
+    color: "#FFFFFF",
+    fontSize: 32,
+    fontWeight: "400",
+  },
+  subtitle: {
+    textAlign: "center",
+    color: "#D1D5DB",
+    fontSize: 20,
+    fontWeight: "300",
+    marginTop: 8,
+  },
+  buttonWrapper: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 40,
+  },
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 24,
+    marginTop: 32,
+    backgroundColor: "#1E3A8A",
+    width: "100%",
+  },
+  buttonText: {
+    textAlign: "center",
+    fontSize: 18,
+    color: "#FFFFFF",
+    fontWeight: "400",
   },
 });
 

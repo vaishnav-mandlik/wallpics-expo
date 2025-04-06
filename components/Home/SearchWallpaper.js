@@ -1,10 +1,10 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import Wallpaper from "./Wallpaper";
 
 const SearchWallpaper = (data) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       {data.data && data.data.length > 0 && (
         <FlatList
           data={data.data}
@@ -13,12 +13,27 @@ const SearchWallpaper = (data) => {
         />
       )}
       {data.data && data.data.length === 0 && (
-        <View className="flex-1 justify-center items-center">
-          <Text className="text-white text-center">Wallpaper not found</Text>
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>Wallpaper not found</Text>
         </View>
       )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyText: {
+    color: "#FFFFFF",
+    textAlign: "center",
+  },
+});
 
 export default SearchWallpaper;
